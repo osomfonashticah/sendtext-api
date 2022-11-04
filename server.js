@@ -12,9 +12,14 @@ let day = date.getDate();
 let month = date.getMonth() + 1;
 let year = date.getFullYear();
 
-mongoose.connect(process.env.DATABASE).then(() => {
-  console.log("DB connected successfully");
-});
+mongoose
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("DB connected successfully");
+  });
 
 app.use(cors());
 app.use(express.json());
